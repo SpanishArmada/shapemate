@@ -25,8 +25,8 @@ public class OrbitRotator : MonoBehaviour {
 	void FixedUpdate () {
 		currentDeg = (currentDeg + rot) % 360;
 		currentYDeg = (currentYDeg + yrot) % 360;
-		transform.position = new Vector3(Mathf.Sin(currentDeg*Mathf.PI/180) * orbitRadius,
-										1+Mathf.Sin(currentYDeg*Mathf.PI/180) * yOscillate, 
+		transform.localPosition = new Vector3(Mathf.Sin(currentDeg*Mathf.PI/180) * orbitRadius,
+										Mathf.Sin(currentYDeg*Mathf.PI/180) * yOscillate, 
 										Mathf.Cos(currentDeg*Mathf.PI/180) * orbitRadius);
 	}
 }

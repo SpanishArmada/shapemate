@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Friend : MonoBehaviour {
+public class FriendProjectile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +13,6 @@ public class Friend : MonoBehaviour {
 	
 	}
 
-	protected virtual void reachedTarget(){
+	protected virtual void Fire(Vector2 targetPos){
 	}
 }
