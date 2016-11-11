@@ -20,8 +20,9 @@ public class EnemyProjectile : MonoBehaviour {
 
     void LaunchProjectile()
     {
+        float width = movement.GetComponent<Renderer>().bounds.size.x;
         Rigidbody2D instance = Instantiate(projectile);
-        instance.position = new Vector2(transform.position.x, transform.position.y);
+        instance.position = new Vector2(transform.position.x + (float)movement.currentDirection * width / 2.0f , transform.position.y);
         instance.velocity = new Vector2((float)movement.currentDirection * projectileSpeed, 0);
     }
 }
