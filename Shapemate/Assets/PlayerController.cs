@@ -76,5 +76,10 @@ public class PlayerController : MonoBehaviour
             latestCheckPoint = col.gameObject.transform.position;
             Destroy(col.gameObject);
         }
+        if (col.gameObject.tag == "Projectile")
+        {
+            Destroy(col.gameObject);
+            // reduce hp here
+        }
     }
 }
