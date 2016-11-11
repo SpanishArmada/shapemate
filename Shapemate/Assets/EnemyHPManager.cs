@@ -7,17 +7,25 @@ public class EnemyHPManager : MonoBehaviour {
 
     private int enemyHP;
 
-	// Use this for initialization
-	void DealDamage (int damage=1) {
+    void Start()
+    {
+        enemyHP = 100;
+    }
+
+    // Use this for initialization
+    void DealDamage (int damage=1) {
         enemyHP -= damage;
-        if(enemyHP < 0)
+        if(enemyHP <= 0)
         {
             Destroy(enemy);
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void Update()
+    {
+        
+    }
+
+    // Update is called once per frame
+
 }
