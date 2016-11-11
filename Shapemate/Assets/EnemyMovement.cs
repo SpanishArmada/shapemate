@@ -3,13 +3,13 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
     public float minLeft, maxLeft;
-    public float speed = (float)1.0;
+    public float speed = (float)0.05;
 
-    private enum Direction {
+    public enum Direction {
         Left = -1,
         Right = 1
     };
-    private Direction currentDirection = Direction.Left;
+    public Direction currentDirection = Direction.Left;
     private float currentLeft;
 
 	// Use this for initialization
