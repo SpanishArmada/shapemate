@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public float yPosition = 0.0f;
     public bool falling = false;
     public bool isDeath = false;
+    public PlayerHPManager selfHP;
     private Vector2 latestCheckPoint = new Vector2(0.0f, 0.0f);
+    
 
     // Use this for initialization
     void Start()
@@ -80,6 +82,10 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(col.gameObject);
             // reduce hp here
+            if (selfHP.DealDamage(10f))
+            {
+                isDeath = true;
+            }
         }
     }
 }

@@ -1,35 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyHPManager : MonoBehaviour {
+public class PlayerHPManager : MonoBehaviour
+{
 
-    public GameObject enemy;
+    public GameObject self;
     public GameObject healthBar;
 
-    public float enemyHP;
+    public float playerHP;
 
     private Vector3 remainHP;
-    private float currentHP;
+    public float currentHP;
     private float scale;
 
     void Start()
     {
-        scale = transform.localScale.x;
-        remainHP = transform.localScale;
-        currentHP = enemyHP;
+        scale = healthBar.transform.localScale.x;
+        remainHP = healthBar.transform.localScale;
+        currentHP = playerHP;
     }
 
     // Use this for initialization
-    public void DealDamage (float damage=1f) {
+    public bool DealDamage(float damage = 10f)
+    {
         currentHP -= damage;
-        remainHP.x = scale * (currentHP / enemyHP);
+        remainHP.x = scale * (currentHP / playerHP);
         healthBar.transform.localScale = remainHP;
         if (currentHP <= 0)
         {
-            Destroy(enemy);
-            Destroy(healthBar);
+            currentHP = playerHP;
+            return true;
         }
-	}
+        return false;
+    }
 
     void Update()
     {
@@ -37,7 +40,7 @@ public class EnemyHPManager : MonoBehaviour {
         {
             DealDamage(10f);
         }
-        
+
     }
 
     // Update is called once per frame
