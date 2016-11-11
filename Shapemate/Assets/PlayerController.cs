@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool isDeath = false;
     public PlayerHPManager selfHP;
     private Vector2 latestCheckPoint = new Vector2(0.0f, 0.0f);
-    
+
 
     // Use this for initialization
     void Start()
@@ -61,6 +61,14 @@ public class PlayerController : MonoBehaviour
             grounded = false;
         }
 
+        if (!movingRight && objectRb.transform.localScale.x > 0)
+        {
+            objectRb.transform.localScale += new Vector3(-2 * objectRb.transform.localScale.x, 0, 0);
+        }
+        else if (movingRight && objectRb.transform.localScale.x < 0)
+        {
+            objectRb.transform.localScale += new Vector3(-2 * objectRb.transform.localScale.x, 0, 0);
+        }
     }
     void OnCollisionEnter2D(Collision2D col)
     {
