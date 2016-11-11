@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     public float yPosition = 0.0f;
     public bool falling = false;
     public bool isDeath = false;
-    
+    private Vector2 latestCheckPoint = new Vector2(0.0f, 0.0f);
+
     // Use this for initialization
     void Start()
     {
@@ -26,8 +27,7 @@ public class PlayerController : MonoBehaviour
             isDeath = true;
         if(isDeath)
         {
-            GameObject checkPoint = GameObject.FindGameObjectsWithTag("CheckPoint")[0];
-            objectRb.transform.position = new Vector2(checkPoint.transform.position.x, 4);
+            objectRb.transform.position = latestCheckPoint;
             objectRb.velocity = new Vector2(0, -20);
             isDeath = false;
         }
@@ -66,5 +66,15 @@ public class PlayerController : MonoBehaviour
             grounded = true;
         if (col.gameObject.tag == "Enemy")
             isDeath = true;
+        
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "CheckPoint")
+        {
+            print("IN");
+            latestCheckPoint = col.gameObject.transform.position;
+            Destroy(col.gameObject);
+        }
     }
 }
