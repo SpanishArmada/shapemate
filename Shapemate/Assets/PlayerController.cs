@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public float gravity = 35.0f;
     public float yPosition = 0.0f;
     public bool falling = false;
-    private Vector3 moveDirection = Vector3.zero;
+    public bool isDeath = false;
+    
     // Use this for initialization
     void Start()
     {
@@ -20,13 +21,22 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        objectRb.velocity = new Vector2(objectRb.velocity.x, objectRb.velocity.y - gravity * Time.deltaTime);
+        if (objectRb.transform.position.y <= -10)
+            isDeath = true;
+        if(isDeath)
+        {
+            GameObject checkPoint = GameObject.FindGameObjectsWithTag("CheckPoint")[0];
+            objectRb.transform.position = new Vector2(checkPoint.transform.position.x, 4);
+            objectRb.velocity = new Vector2(0, -20);
+            isDeath = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
             objectRb.velocity = new Vector2(0, objectRb.velocity.y);
         if (Input.GetKey(KeyCode.A))
@@ -48,12 +58,13 @@ public class PlayerController : MonoBehaviour
             objectRb.velocity = new Vector2(objectRb.velocity.x, jumpSpeed);
             grounded = false;
         }
-        objectRb.velocity = new Vector2(objectRb.velocity.x, objectRb.velocity.y - gravity * Time.deltaTime);
 
     }
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Ground")
             grounded = true;
+        if (col.gameObject.tag == "Enemy")
+            isDeath = true;
     }
 }
