@@ -6,15 +6,16 @@ public class EnemyHPManager : MonoBehaviour {
     public GameObject enemy;
     public GameObject healthBar;
 
-    public float scale;
     public float enemyHP;
 
     private Vector3 remainHP;
     private float currentHP;
+    private float scale;
 
     void Start()
     {
-        remainHP = new Vector3(scale, scale, scale);
+        scale = transform.localScale.x;
+        remainHP = transform.localScale;
         currentHP = enemyHP;
     }
 

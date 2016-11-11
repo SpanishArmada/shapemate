@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
     public float minLeft, maxLeft;
     public float speed = (float)0.05;
-    public float scale;
+    
 
     public enum Direction {
         Left = -1,
@@ -12,13 +12,15 @@ public class EnemyMovement : MonoBehaviour {
     };
     public Direction currentDirection = Direction.Left;
     private float currentLeft;
+    private float scale;
     private Vector3 objDir;
 
 	// Use this for initialization
 	void Start () {
         currentDirection = Direction.Left;
         currentLeft = transform.position.x;
-        objDir = new Vector3 (scale, scale, scale);
+        scale = transform.localScale.x;
+        objDir = transform.localScale;
     }
 
     void FixedUpdate()
