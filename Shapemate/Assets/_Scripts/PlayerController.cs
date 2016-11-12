@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         }
         if(col.gameObject.tag == "Finish")
         {
-            Application.LoadLevel(2);
+            Application.LoadLevel(3);
         }
 
     }
