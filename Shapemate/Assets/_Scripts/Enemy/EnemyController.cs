@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour {
     public EnemyUpDown thisUpDown;
     public EnemyHPManager thisHP;
     public Rigidbody2D thisRB;
+    public GameObject thisTop;
 
     private bool isDeath;
 
@@ -17,6 +18,10 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        if(thisTop == null)
+        {
+            isDeath = true;
+        }
         if (isDeath)
         {
             gameObject.layer = 9;
@@ -34,16 +39,37 @@ public class EnemyController : MonoBehaviour {
         
     }
 
+    public void Kill()
+    {
+        isDeath = true;
+    }
+
     void OnCollisionEnter2D(Collision2D col)
     {
         //Change to Triangle Tag
+        //if (col.gameObject.tag == "Player")
+        //{
+        //    // reduce hp here
+        //    if (thisHP != null && thisHP.DealDamage(10f))
+        //    {
+        //        isDeath = true;
+        //    }
+        //}
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
         if (col.gameObject.tag == "Player")
         {
             // reduce hp here
-            if (thisHP != null && thisHP.DealDamage(10f))
+            if (transform.position.y + 0.2 < col.transform.position.y)
             {
-                isDeath = true;
+                if (thisHP != null && thisHP.DealDamage(10f))
+                {
+                    isDeath = true;
+                }
             }
+               
         }
     }
 }

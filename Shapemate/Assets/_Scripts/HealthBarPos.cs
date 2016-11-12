@@ -15,7 +15,7 @@ public class HealthBarPos : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         transform.position = obj.transform.position + offset;
     }

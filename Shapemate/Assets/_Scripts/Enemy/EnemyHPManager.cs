@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyHPManager : MonoBehaviour {
 
-    public GameObject healthBar;
+    public GameObject healthBar = null;
    
 
     public float enemyHP;
