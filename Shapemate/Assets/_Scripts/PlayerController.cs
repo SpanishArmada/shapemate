@@ -89,10 +89,12 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "CheckPoint")
-        {
-            print("IN");
-            latestCheckPoint = col.gameObject.transform.position;
-            Destroy(col.gameObject);
+		{
+			print("IN");
+			latestCheckPoint = col.gameObject.transform.position;
+			PlayerProjectileController projController = this.gameObject.GetComponentInChildren<PlayerProjectileController>();
+			projController.AddAmmo();
+			Destroy(col.gameObject);
         }
         if (col.gameObject.tag == "Projectile")
         {

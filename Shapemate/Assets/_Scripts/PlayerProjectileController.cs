@@ -70,4 +70,9 @@ public class PlayerProjectileController : MonoBehaviour {
 			Destroy(child.gameObject);
 		}
 	}
+
+	public void AddAmmo(){
+		++maxAmmo;
+		visController.addActive(new Vector3(0,0,0));
+	}
 }
