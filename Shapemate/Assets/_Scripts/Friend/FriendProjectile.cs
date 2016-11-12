@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FriendProjectile : MonoBehaviour {
-	public int projectileType;
+public class FriendProjectile : MonoBehaviour { 
 	// Use this for initialization
 	void Start () {
 	

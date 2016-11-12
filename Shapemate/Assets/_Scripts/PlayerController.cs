@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D objectRb;
+	public GameObject sprite;
     public bool movingRight = true;
     public bool grounded = true;
     public float speed = 10.0f;
@@ -62,13 +63,13 @@ public class PlayerController : MonoBehaviour
             grounded = false;
         }
 
-        if (!movingRight && objectRb.transform.localScale.x > 0)
+		if (!movingRight && sprite.transform.localScale.x > 0)
         {
-            objectRb.transform.localScale += new Vector3(-2 * objectRb.transform.localScale.x, 0, 0);
+			sprite.transform.localScale += new Vector3(-2 * sprite.transform.localScale.x, 0, 0);
         }
-        else if (movingRight && objectRb.transform.localScale.x < 0)
+		else if (movingRight && sprite.transform.localScale.x < 0)
         {
-            objectRb.transform.localScale += new Vector3(-2 * objectRb.transform.localScale.x, 0, 0);
+			sprite.transform.localScale += new Vector3(-2 * sprite.transform.localScale.x, 0, 0);
         }
     }
     void OnCollisionEnter2D(Collision2D col)
