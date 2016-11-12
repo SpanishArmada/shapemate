@@ -27,6 +27,10 @@ public class EnemyController : MonoBehaviour {
             if(thisRB!=null)
                 thisRB.velocity = new Vector2(thisRB.velocity.x, thisRB.velocity.y - 35 * Time.deltaTime);
         }
+        if(transform.position.y < -100)
+        {
+            Destroy(gameObject);
+        }
         
     }
 
