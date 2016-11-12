@@ -9,7 +9,7 @@ public class EnemyHPManager : MonoBehaviour {
     public float enemyHP;
 
     private Vector3 remainHP;
-    private float currentHP;
+    public float currentHP;
     private float scale;
 
     void Start()
