@@ -60,6 +60,7 @@ public class VisualProjectileController : MonoBehaviour {
 	}
 
 	public void addActive(Vector3 position){
+        Debug.Log(currentlyActive + " " + children.ToString());
 		++currentlyActive;
 		if (children.Count < currentlyActive){
 			GameObject temp = Instantiate(sprite);

@@ -4,6 +4,8 @@ using System.Collections;
 public class EnemyChasePlayer : EnemyMovement {
     public GameObject player;
 
+    private Direction previousDirection;
+
 	// Use this for initialization
 	void Start () {
         currentDirection = Direction.Left;
@@ -11,7 +13,9 @@ public class EnemyChasePlayer : EnemyMovement {
 
     void FixedUpdate()
     {
+        previousDirection = currentDirection;
         CheckChangeDirection();
+
         Vector3 moveDir = Vector3.zero;
         moveDir.x += (int)currentDirection * speed;
         Vector3 resultantPosition = transform.position + moveDir;
@@ -21,17 +25,20 @@ public class EnemyChasePlayer : EnemyMovement {
         {
             transform.position = resultantPosition;
         }
+        if (previousDirection == currentDirection)
+        {
+            return;
+        }
 
         // face left or right
         Vector3 objDir = transform.localScale;
-        objDir.x = transform.localScale.x * (int)currentDirection;
+        objDir.x = transform.localScale.x * -1;
         transform.localScale = objDir;
     }
 
     void CheckChangeDirection()
     {
-        // Debug.Log(transform.position.x);
-        // Debug.Log(player.transform.position.x);
+        //Debug.Log(transform.position.x + " " + player.transform.position.x);
         if (player.transform.position.x < transform.position.x)
         {
             currentDirection = Direction.Left;
