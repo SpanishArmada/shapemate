@@ -57,6 +57,7 @@ public class SquareProjectile : FriendProjectile {
 	public void ReachTarget(){
 		GameObject newobj = Instantiate(spawn);
 		newobj.transform.position = transform.position;
+		newobj.transform.parent = transform.parent;
 		Destroy(this.gameObject);
 	}
 }
