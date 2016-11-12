@@ -76,8 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
             grounded = true;
-        //if (col.gameObject.tag == "Enemy")
-        //    isDeath = true;
+
         if (col.gameObject.tag == "Enemy")
         {
             // reduce hp here
