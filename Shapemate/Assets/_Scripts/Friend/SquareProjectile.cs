@@ -32,6 +32,20 @@ public class SquareProjectile : FriendProjectile {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D coll){
+		Debug.Log("Coll");
+		if (coll.gameObject.tag != "Player"){
+			ReachTarget();
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D coll){
+		Debug.Log("Trigger");
+		if (coll.gameObject.tag != "Player"){
+			ReachTarget();
+		}
+	}
+
 	public override void Fire(Vector2 targetPos){ 
 		target = targetPos;
 		initDist = target - (Vector2)transform.position;
@@ -42,7 +56,7 @@ public class SquareProjectile : FriendProjectile {
 
 	public void ReachTarget(){
 		GameObject newobj = Instantiate(spawn);
-		newobj.transform.position = target;
+		newobj.transform.position = transform.position;
 		Destroy(this.gameObject);
 	}
 }

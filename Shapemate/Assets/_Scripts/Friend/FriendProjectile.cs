@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class FriendProjectile : MonoBehaviour {
-
+	public int projectileType;
 	// Use this for initialization
 	void Start () {
 	
