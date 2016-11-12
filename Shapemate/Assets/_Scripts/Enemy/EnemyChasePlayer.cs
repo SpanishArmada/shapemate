@@ -30,6 +30,8 @@ public class EnemyChasePlayer : EnemyMovement {
 
     void CheckChangeDirection()
     {
+        // Debug.Log(transform.position.x);
+        // Debug.Log(player.transform.position.x);
         if (player.transform.position.x < transform.position.x)
         {
             currentDirection = Direction.Left;
