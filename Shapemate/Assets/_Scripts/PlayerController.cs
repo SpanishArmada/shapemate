@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         {
             objectRb.transform.position = latestCheckPoint;
             objectRb.velocity = new Vector2(0, -20);
+            selfHP.ResetHealth();
             isDeath = false;
         }
     }
@@ -74,9 +75,16 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
             grounded = true;
+        //if (col.gameObject.tag == "Enemy")
+        //    isDeath = true;
         if (col.gameObject.tag == "Enemy")
-            isDeath = true;
-        
+        {
+            // reduce hp here
+            if (selfHP.DealDamage(10f))
+            {
+                isDeath = true;
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -90,10 +98,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(col.gameObject);
             // reduce hp here
-            if (selfHP.DealDamage(10f))
+            if (selfHP != null && selfHP.DealDamage(10f))
             {
                 isDeath = true;
             }
         }
+        
     }
 }

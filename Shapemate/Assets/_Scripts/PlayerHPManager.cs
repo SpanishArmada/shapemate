@@ -28,10 +28,17 @@ public class PlayerHPManager : MonoBehaviour
         healthBar.transform.localScale = remainHP;
         if (currentHP <= 0)
         {
-            currentHP = playerHP;
+            
             return true;
         }
         return false;
+    }
+
+    public void ResetHealth()
+    {
+        currentHP = playerHP;
+        remainHP.x = scale * (currentHP / playerHP);
+        healthBar.transform.localScale = remainHP;
     }
 
     void Update()

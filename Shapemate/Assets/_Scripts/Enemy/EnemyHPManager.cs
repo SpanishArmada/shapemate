@@ -3,8 +3,8 @@ using System.Collections;
 
 public class EnemyHPManager : MonoBehaviour {
 
-    public GameObject enemy;
     public GameObject healthBar;
+   
 
     public float enemyHP;
 
@@ -14,21 +14,22 @@ public class EnemyHPManager : MonoBehaviour {
 
     void Start()
     {
-        scale = transform.localScale.x;
-        remainHP = transform.localScale;
+        scale = healthBar.transform.localScale.x;
+        remainHP = healthBar.transform.localScale;
         currentHP = enemyHP;
     }
 
     // Use this for initialization
-    public void DealDamage (float damage=1f) {
+    public bool DealDamage (float damage=1f) {
         currentHP -= damage;
         remainHP.x = scale * (currentHP / enemyHP);
         healthBar.transform.localScale = remainHP;
         if (currentHP <= 0)
         {
-            Destroy(enemy);
             Destroy(healthBar);
+            return true;
         }
+        return false;
 	}
 
     void Update()

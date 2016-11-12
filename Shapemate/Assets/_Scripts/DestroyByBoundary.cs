@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FriendProjectile : MonoBehaviour {
-	public int projectileType;
+public class DestroyByBoundary : MonoBehaviour {
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,7 +12,8 @@ public class FriendProjectile : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	public virtual void Fire(Vector2 targetPos){
-	}
+    void OnTriggerExit2D(Collider2D other)
+    {
+        Destroy(other.gameObject);
+    }
 }
