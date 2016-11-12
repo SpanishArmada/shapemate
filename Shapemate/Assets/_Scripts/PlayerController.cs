@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public float yPosition = 0.0f;
     public bool falling = false;
     public bool isDeath = false;
+    public PlayerHPManager selfHP;
     private Vector2 latestCheckPoint = new Vector2(0.0f, 0.0f);
+
 
     // Use this for initialization
     void Start()
@@ -59,6 +61,14 @@ public class PlayerController : MonoBehaviour
             grounded = false;
         }
 
+        if (!movingRight && objectRb.transform.localScale.x > 0)
+        {
+            objectRb.transform.localScale += new Vector3(-2 * objectRb.transform.localScale.x, 0, 0);
+        }
+        else if (movingRight && objectRb.transform.localScale.x < 0)
+        {
+            objectRb.transform.localScale += new Vector3(-2 * objectRb.transform.localScale.x, 0, 0);
+        }
     }
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -75,6 +85,15 @@ public class PlayerController : MonoBehaviour
             print("IN");
             latestCheckPoint = col.gameObject.transform.position;
             Destroy(col.gameObject);
+        }
+        if (col.gameObject.tag == "Projectile")
+        {
+            Destroy(col.gameObject);
+            // reduce hp here
+            if (selfHP.DealDamage(10f))
+            {
+                isDeath = true;
+            }
         }
     }
 }
