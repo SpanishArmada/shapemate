@@ -103,6 +103,32 @@ public class PlayerController : MonoBehaviour
                 isDeath = true;
             }
         }
-        
+        if (col.gameObject.tag == "Enemy")
+        {
+            // reduce hp here
+            if (selfHP.DealDamage(10f))
+            {
+                isDeath = true;
+            }
+        }
+        if (col.gameObject.tag == "EnemyTop")
+        {
+            if(transform.position.y > col.transform.position.y + 0.5)
+            {
+                Destroy(col.gameObject);
+                objectRb.velocity = new Vector2(objectRb.velocity.x, jumpSpeed);
+                grounded = false;
+            }
+            
+        }
+        if (col.gameObject.tag == "EnemyHP")
+        {
+            if (transform.position.y > col.transform.position.y + 0.2)
+            {
+                objectRb.velocity = new Vector2(objectRb.velocity.x, jumpSpeed);
+                grounded = false;
+            }
+        }
+
     }
 }
