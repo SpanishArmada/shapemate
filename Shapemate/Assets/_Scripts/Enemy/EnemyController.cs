@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour {
     public EnemyUpDown thisUpDown;
     public EnemyHPManager thisHP;
     public Rigidbody2D thisRB;
-    public GameObject thisTop;
 
     private bool isDeath;
 
@@ -18,10 +17,6 @@ public class EnemyController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if(thisTop == null)
-        {
-            isDeath = true;
-        }
         if (isDeath)
         {
             gameObject.layer = 9;

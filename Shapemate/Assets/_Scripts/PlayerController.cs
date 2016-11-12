@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             // reduce hp here
             if (transform.position.y > col.transform.position.y + 0.5)
             {
-                Destroy(col.gameObject);
+                col.gameObject.GetComponent<EnemyController>().Kill();
                 objectRb.velocity = new Vector2(objectRb.velocity.x, jumpSpeed);
                 grounded = false;
             }else
