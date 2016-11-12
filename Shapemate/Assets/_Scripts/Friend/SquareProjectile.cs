@@ -55,9 +55,12 @@ public class SquareProjectile : FriendProjectile {
 	}
 
 	public void ReachTarget(){
+		TrailRenderer tr = GetComponentInChildren<TrailRenderer>();
 		GameObject newobj = Instantiate(spawn);
 		newobj.transform.position = transform.position;
 		newobj.transform.parent = transform.parent;
+		tr.transform.parent = newobj.transform;
+		Debug.Log(tr);
 		Destroy(this.gameObject);
 	}
 }
