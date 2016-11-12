@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class proceedNextStage : MonoBehaviour {
+public class GroundCollider : MonoBehaviour {
 
+	public float minimumHeight;
 	// Use this for initialization
 	void Start () {
 	
@@ -10,7 +11,6 @@ public class proceedNextStage : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyUp(KeyCode.Space))
-            Application.LoadLevel(2);
-    }
+	
+	}
 }
