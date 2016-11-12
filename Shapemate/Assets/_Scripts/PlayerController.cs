@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(col.gameObject);
             // reduce hp here
-            if (selfHP.DealDamage(10f))
+            if (selfHP != null && selfHP.DealDamage(10f))
             {
                 isDeath = true;
             }
