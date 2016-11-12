@@ -13,6 +13,6 @@ public class FriendProjectile : MonoBehaviour {
 	
 	}
 
-	protected virtual void Fire(Vector2 targetPos){
+	public virtual void Fire(Vector2 targetPos){
 	}
 }
