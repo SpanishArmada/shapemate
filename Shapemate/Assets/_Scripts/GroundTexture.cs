@@ -22,9 +22,8 @@ public class GroundTexture : MonoBehaviour {
         double width = renderer.bounds.size.x;
         double height = renderer.bounds.size.y;
 
-
         Material groundMaterial = new Material(baseMaterial);
-        groundMaterial.mainTextureScale = new Vector2((float)width, (float)height);
+        groundMaterial.mainTextureScale = new Vector2((float)width, -(float)height);
         //groundMaterial.mainTextureOffset = new Vector2((float)width % 32, (float)height % 32);
 
         renderer.material = groundMaterial;
