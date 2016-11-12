@@ -38,7 +38,7 @@ public class EnemyChasePlayer : EnemyMovement {
         {
             currentDirection = Direction.Right;
         }
-        Debug.Log(currentDirection.ToString());
+
     }
 	
 	// Update is called once per frame

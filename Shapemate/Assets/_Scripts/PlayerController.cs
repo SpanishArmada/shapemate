@@ -130,6 +130,10 @@ public class PlayerController : MonoBehaviour
                 grounded = false;
             }
         }
+        if(col.gameObject.tag == "Finish")
+        {
+            Application.LoadLevel(2);
+        }
 
     }
 }
