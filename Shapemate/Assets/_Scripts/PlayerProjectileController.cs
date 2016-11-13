@@ -73,6 +73,7 @@ public class PlayerProjectileController : MonoBehaviour {
 
 	public void AddAmmo(){
 		++maxAmmo;
+        ++remainingAmmo;
 		visController.addActive(new Vector3(0,0,0));
 	}
 }
